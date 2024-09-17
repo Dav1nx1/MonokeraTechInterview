@@ -49,7 +49,7 @@ export function SearchInput() {
   }
   
   return (
-    <div className="w-full max-w-md mx-auto space-y-4">
+    <div className="w-full max-w-xl mx-auto space-y-4">
       <Command className="rounded-lg border shadow-md bg-gray-700 border-gray-600">
         <CommandInput 
           placeholder="Search your favorite character" 

@@ -42,7 +42,7 @@ export default function RootLayout({
               <MobileSidebar />
             )} */}
 
-            <main className="flex-grow flex flex-col items-center px-4 text-center">
+            <main className="flex-grow flex flex-col px-4">
               {children}
             </main>
             {/* Footer */}
