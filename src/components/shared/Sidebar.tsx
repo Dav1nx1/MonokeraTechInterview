@@ -1,5 +1,5 @@
 'use client'
-import { ArrowLeft, Network } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation'

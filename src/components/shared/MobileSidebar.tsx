@@ -8,7 +8,6 @@ export function MobileSidebar({ closeSidebar }: { closeSidebar: () => void }) {
       {/* Sidebar content */}
       <div className="bg-gray-900 p-4 shadow-lg w-full">
         <div className="text-white font-bold text-xl mb-4">Menu</div>
-        {/* Add your sidebar navigation or links here */}
       </div>
 
       {/* Navigation icons at the bottom */}
