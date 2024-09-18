@@ -11,8 +11,8 @@ export interface Character {
   species: string;
   type: string;
   gender: string;
-  location: Location;
-  origin: {
+  location?: Location;
+  origin?: {
     name: string;
     type?: string;
     dimension?: string;

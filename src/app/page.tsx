@@ -1,39 +1,68 @@
-'use client'
+'use client';
 
-import { Button } from "@/components/ui/button";
 import { SearchInput } from "@/components/shared/SearchInput";
 import { ResultLists } from "@/components/shared/ResultList";
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import Head from "next/head"; // For adding metadata
 
 export default function Home() {
   const [nameFilter, setNameFilter] = useState('');
 
-  const handleSearch = (value: string) => {
+  // Memoize the search handler to prevent unnecessary re-renders
+  const handleSearch = useCallback((value: string) => {
     setNameFilter(value);
-  }
+  }, []);
 
   return (
-    <div className="flex flex-col">
-      <div className="flex justify-center items-center flex-col">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4">Rick and Morty</h1>
+    <>
+      {/* SEO: Head for Title and Meta Tags */}
+      <Head>
+        <title>Rick and Morty - Character Search</title>
+        <meta name="description" content="Search for your favorite characters from the Rick and Morty series." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="UTF-8" />
+      </Head>
 
-        {/* Subscription notice */}
-        <div className="w-full max-w-xl mb-4 flex flex-col md:flex-row justify-between items-center bg-gray-800 rounded-lg p-2 text-center">
-          <span className="text-sm text-gray-300 mb-2 md:mb-0">Created by Oscar Corcho.</span>
-          <Button variant="outline" size="sm" className="text-green-400 border-green-400 hover:bg-green-400/10">
-            Contact Me
-          </Button>
+      <div className="flex flex-col" role="main" aria-labelledby="page-title" data-testid="page-container">
+        {/* Page Header */}
+        <div className="flex justify-center items-center flex-col">
+          <h1
+            id="page-title"
+            className="text-3xl md:text-4xl font-bold mb-4"
+            aria-label="Rick and Morty Page Title"
+            data-testid="page-title"
+          >
+            Rick and Morty
+          </h1>
+
+          {/* Info Notice */}
         </div>
-      </div>
 
-        {/* Input field */}
-        <div className="w-full relative items-center text-center justify-center">
-          <SearchInput nameFilter={nameFilter} handleNameFilter={(value: string) => handleSearch(value) }/>
+        {/* Search Section */}
+        <div
+          className="w-full relative items-center text-center justify-center"
+          aria-label="Search Section"
+          data-testid="search-section"
+        >
+          <SearchInput
+            nameFilter={nameFilter}
+            handleNameFilter={handleSearch}
+            aria-label="Search Input"
+            data-testid="search-input"
+          />
         </div>
 
-        <div className="container mx-auto py-8">
+        {/* Results list with lazy loading */}
+        <div className="container mx-auto py-8" role="list" aria-label="Search Results" data-testid="results-list">
           <ResultLists nameFilter={nameFilter} />
         </div>
-    </div>
+
+        {/* Footer */}
+        <footer className="p-4 flex flex-wrap justify-center gap-4 text-xs md:text-sm text-gray-400">
+          <a href="#" className="hover:text-white">Oscar Corcho - Made with Love</a>
+          <a href="#" className="hover:text-white">For Monokera</a>
+        </footer>
+      </div>
+    </>
   );
 }

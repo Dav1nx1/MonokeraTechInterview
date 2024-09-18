@@ -14,7 +14,7 @@ export const RickAndMortyRepository = {
   }
 
   // Conditionally append `page` if it exists
-  if (page) {
+  if (page && !name) {
     params.append('page', page.toString());
   }
 

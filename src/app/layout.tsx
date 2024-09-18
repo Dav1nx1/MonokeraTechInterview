@@ -31,24 +31,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex min-h-screen bg-slate-700 text-white">
+        <div className="flex min-h-screen bg-background">
           {/* Sidebar for larger screens */}
           <Sidebar />
           <div className="flex-1 flex flex-col px-28 py-6">
             {/* Main content */}
             {/* Header */}
             <Header />
-            {/* Mobile sidebar */}
-            {/* {isSidebarOpen && (
-              <MobileSidebar />
-            )} */}
 
-            <main className="flex-grow flex flex-col px-4">
+            <main className="flex-grow flex flex-col">
               <Providers>{children}</Providers>
             </main>
             {/* Footer */}
             <footer className="p-4 flex flex-wrap justify-center gap-4 text-xs md:text-sm text-gray-400">
-              <a href="#" className="hover:text-white">Oscar Corcho - Made with Love</a>
+              <a href="https://linkedin.com/in/oscar-corcho" className="hover:text-white">Oscar Corcho - Made with Love</a>
               <a href="#" className="hover:text-white">For Monokera</a>
             </footer>
           </div>

@@ -2,7 +2,7 @@
 import React, { createContext, useState, ReactNode } from 'react';
 import { Character } from '@/types/Entities'
 
-interface CharacterContextProps {
+export interface CharacterContextProps {
   characters: Character[];
   recentlyViewed: Character[];
   addCharacters: (newCharacters: Character[]) => void;
