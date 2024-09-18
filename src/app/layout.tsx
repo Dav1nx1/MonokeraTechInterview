@@ -1,20 +1,8 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+import "./styles/globals.css";
 import { Sidebar } from "@/components/shared/Sidebar";
 import { Header } from "@/components/shared/Header";
 import Providers from "@/providers/TanstackProvider";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,24 +16,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div className="flex min-h-screen bg-background">
-          {/* Sidebar for larger screens */}
+      <body className="root-layout__body antialiased">
+        <div className="root-layout__container">
           <Sidebar />
-          <div className="flex-1 flex flex-col px-28 py-6">
-            {/* Main content */}
-            {/* Header */}
+          <div className="root-layout__content">
             <Header />
-
-            <main className="flex-grow flex flex-col">
+            <main className="root-layout__main">
               <Providers>{children}</Providers>
             </main>
-            {/* Footer */}
-            <footer className="p-4 flex flex-wrap justify-center gap-4 text-xs md:text-sm text-gray-400">
-              <a href="https://linkedin.com/in/oscar-corcho" className="hover:text-white">Oscar Corcho - Made with Love</a>
-              <a href="#" className="hover:text-white">For Monokera</a>
+            <footer className="root-layout__footer">
+              <a href="https://linkedin.com/in/oscar-corcho" className="root-layout__footer-link root-layout__footer-link--highlight">
+                Oscar Corcho - Made with Love
+              </a>
+              <a href="#" className="root-layout__footer-link">
+                For Monokera
+              </a>
             </footer>
           </div>
         </div>

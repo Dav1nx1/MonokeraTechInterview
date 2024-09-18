@@ -1,69 +1,68 @@
-'use client'
+'use client';
 
 import { useFetchCharacterById } from "@/useCases/fetchCharacterById";
-import { CharacterContext } from '@/context/CharacterContext'
+import { CharacterContext } from '@/context/CharacterContext';
 import Image from "next/image";
 import { useContext } from "react";
 
+import '../../styles/character.css'
+
 export default function Page({ params }: { params: { id: number } }) {
 
-  const { data, isLoading, error } = useFetchCharacterById(params?.id)
+  const { data, isLoading, error } = useFetchCharacterById(params?.id);
   const { addRecentlyViewed } = useContext(CharacterContext)!;
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading characters</div>;
+  if (error) return <div>Error loading character information</div>;
   
   if (data) {
     addRecentlyViewed(data); // Add to recently viewed when a user visits this page
   }
 
   return (
-    <div className="w-full max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-background rounded-lg overflow-hidden">
+    <div className="character-page">
+      <div className="character-page__container">
+        <div className="character-page__image-wrapper">
           <Image
             src={data?.image ? data.image : '/images/placeholder.svg'}
             alt="Character Image"
             width={600}
             height={600}
-            className="w-full h-auto object-cover"
-            style={{ aspectRatio: "600/600", objectFit: "cover" }}
+            className="character-page__image"
           />
         </div>
-        <div className="space-y-6">
-          <div>
-            <h1 className="text-3xl font-bold">{data?.name}</h1>
+        <div className="character-page__details">
+          <div className="character-page__name">
+            <h1 className="character-page__title">{data?.name}</h1>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <h3 className="text-lg font-semibold">Status</h3>
-              <p className="text-muted-foreground">{data?.status}</p>
+          <div className="character-page__info-grid">
+            <div className="character-page__info-item">
+              <h3 className="character-page__info-title">Status</h3>
+              <p className="character-page__info-text">{data?.status}</p>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold">Species</h3>
-              <p className="text-muted-foreground">{data?.species}</p>
+            <div className="character-page__info-item">
+              <h3 className="character-page__info-title">Species</h3>
+              <p className="character-page__info-text">{data?.species}</p>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold">Gender</h3>
-              <p className="text-muted-foreground">{data?.gender}</p>
+            <div className="character-page__info-item">
+              <h3 className="character-page__info-title">Gender</h3>
+              <p className="character-page__info-text">{data?.gender}</p>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold">Origin</h3>
-              <p className="text-muted-foreground">{data?.origin.name}</p>
+            <div className="character-page__info-item">
+              <h3 className="character-page__info-title">Origin</h3>
+              <p className="character-page__info-text">{data?.origin?.name}</p>
             </div>
           </div>
-          <div>
-            <h3 className="text-lg font-semibold">Location</h3>
-            <p className="text-muted-foreground">{data?.location?.name}</p>
+          <div className="character-page__location">
+            <h3 className="character-page__info-title">Location</h3>
+            <p className="character-page__info-text">{data?.location?.name}</p>
           </div>
-          <div>
-            <h3 className="text-lg font-semibold">Episode Appearances</h3>
-            <ul className="space-y-2 text-muted-foreground">
-              { data?.episode?.map( (episode: string, index: number) => {
-                return (
-                  <li key={index}>{`Episode ${index}: ${episode}`}</li>
-                )
-              }) }
+          <div className="character-page__episodes">
+            <h3 className="character-page__info-title">Episode Appearances</h3>
+            <ul className="character-page__episode-list">
+              {data?.episode?.map((episode: string, index: number) => (
+                <li key={index} className="character-page__episode-item">{`Episode ${index + 1}: ${episode}`}</li>
+              ))}
             </ul>
           </div>
         </div>
