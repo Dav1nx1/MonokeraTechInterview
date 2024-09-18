@@ -1,70 +1,49 @@
-import { cn } from "@/lib/utils";
-import { BellRing, Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { Switch } from "@/components/ui/switch";
+import Image from "next/image";
+import { Card, CardTitle, CardContent } from "@/components/ui/card";
+import { AtomIcon, GlobeIcon } from "lucide-react";
+import { Character } from "@/types/Entities";
+import { useRouter } from 'next/navigation';
 
-const notifications = [
-  {
-    title: "Your call has been confirmed.",
-    description: "1 hour ago",
-  },
-  {
-    title: "You have a new message!",
-    description: "1 hour ago",
-  },
-  {
-    title: "Your subscription is expiring soon!",
-    description: "2 hours ago",
-  },
-]
+type CharacterCardProps = {
+  key: number;
+  character: Character
+}
 
-export type CardProps = React.ComponentProps<typeof Card>
+export function CharacterCard({ key, character }: CharacterCardProps) {
+  const router = useRouter();
 
-export function CharacterCard({ className, ...props }: CardProps) {
+  const handleRedirect = () => {
+    router.push(`/character/${character.id}`);
+  };
+
   return (
-    <Card className={cn(className)} {...props}>
-      <CardHeader>
-        <CardTitle>Notifications</CardTitle>
-        <CardDescription>You have 3 unread messages.</CardDescription>
-      </CardHeader>
-      <CardContent className="grid gap-4">
-        <div className=" flex items-center space-x-4 rounded-md border p-4">
-          <BellRing />
-          <div className="flex-1 space-y-1">
-            <p className="text-sm font-medium leading-none">
-              Push Notifications
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Send notifications to device.
-            </p>
+    <Card className="w-full max-w-sm hover:shadow-2xl" key={key} onClick={() => handleRedirect()}>
+      <Image
+        src={character?.image}
+        alt="Rick Sanchez"
+        className="rounded-t-lg object-cover w-full aspect-[4/3]"
+        width="400"
+        height="300"
+      />
+      <CardContent className="p-6 space-y-4">
+        <div className="flex items-center justify-between">
+          <CardTitle className="text-2xl font-bold">{character?.name}</CardTitle>
+          <div className="flex items-center gap-2 text-sm font-medium">
+            <div className="w-2 h-2 rounded-full bg-green-500" />
+            <span>{character?.status}</span>
           </div>
-          <Switch />
         </div>
-        <div>
-          {notifications.map((notification, index) => (
-            <div
-              key={index}
-              className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
-            >
-              <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">
-                  {notification.title}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {notification.description}
-                </p>
-              </div>
-            </div>
-          ))}
+        <div className="grid gap-2 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2">
+            <AtomIcon className="w-4 h-4" />
+            <span>{character?.species}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <GlobeIcon className="w-4 h-4" />
+            <span>{character?.location?.name}</span>
+          </div>
         </div>
       </CardContent>
-      <CardFooter>
-        <Button className="w-full">
-          <Check className="mr-2 h-4 w-4" /> Mark all as read
-        </Button>
-      </CardFooter>
     </Card>
   )
 }

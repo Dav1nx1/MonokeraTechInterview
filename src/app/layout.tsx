@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Sidebar } from "@/components/shared/Sidebar";
 import { Header } from "@/components/shared/Header";
+import Providers from "@/providers/TanstackProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,10 +31,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex min-h-screen bg-black text-white">
+        <div className="flex min-h-screen bg-slate-700 text-white">
           {/* Sidebar for larger screens */}
           <Sidebar />
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col px-28 py-6">
             {/* Main content */}
             {/* Header */}
             <Header />
@@ -43,12 +44,12 @@ export default function RootLayout({
             )} */}
 
             <main className="flex-grow flex flex-col px-4">
-              {children}
+              <Providers>{children}</Providers>
             </main>
             {/* Footer */}
             <footer className="p-4 flex flex-wrap justify-center gap-4 text-xs md:text-sm text-gray-400">
-              <a href="#" className="hover:text-white">Oscar Corcho</a>
-              <a href="#" className="hover:text-white">Monokera</a>
+              <a href="#" className="hover:text-white">Oscar Corcho - Made with Love</a>
+              <a href="#" className="hover:text-white">For Monokera</a>
             </footer>
           </div>
         </div>
