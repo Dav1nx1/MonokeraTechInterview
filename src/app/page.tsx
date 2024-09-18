@@ -5,6 +5,8 @@ import { ResultLists } from "@/components/shared/ResultList";
 import { useState, useCallback } from "react";
 import Head from "next/head"; // For adding metadata
 
+import './styles/home.css'
+
 export default function Home() {
   const [nameFilter, setNameFilter] = useState('');
 
@@ -23,24 +25,22 @@ export default function Home() {
         <meta charSet="UTF-8" />
       </Head>
 
-      <div className="flex flex-col" role="main" aria-labelledby="page-title" data-testid="page-container">
+      <div className="home" role="main" aria-labelledby="page-title" data-testid="page-container">
         {/* Page Header */}
-        <div className="flex justify-center items-center flex-col">
+        <div className="home__header">
           <h1
             id="page-title"
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="home__title"
             aria-label="Rick and Morty Page Title"
             data-testid="page-title"
           >
             Rick and Morty
           </h1>
-
-          {/* Info Notice */}
         </div>
 
         {/* Search Section */}
         <div
-          className="w-full relative items-center text-center justify-center"
+          className="home__search-section"
           aria-label="Search Section"
           data-testid="search-section"
         >
@@ -53,14 +53,14 @@ export default function Home() {
         </div>
 
         {/* Results list with lazy loading */}
-        <div className="container mx-auto py-8" role="list" aria-label="Search Results" data-testid="results-list">
+        <div className="home__results" role="list" aria-label="Search Results" data-testid="results-list">
           <ResultLists nameFilter={nameFilter} />
         </div>
 
         {/* Footer */}
-        <footer className="p-4 flex flex-wrap justify-center gap-4 text-xs md:text-sm text-gray-400">
-          <a href="#" className="hover:text-white">Oscar Corcho - Made with Love</a>
-          <a href="#" className="hover:text-white">For Monokera</a>
+        <footer className="home__footer">
+          <a href="#" className="home__footer-link home__footer-link--highlight">Oscar Corcho - Made with Love</a>
+          <a href="#" className="home__footer-link">For Monokera</a>
         </footer>
       </div>
     </>

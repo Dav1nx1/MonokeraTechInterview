@@ -1,0 +1,67 @@
+/* BEM structure for Home component */
+
+/* Block: home */
+.home {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-4);
+  }
+  
+  .home__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .home__title {
+    font-size: var(--tw-font-size-3xl);
+    font-weight: bold;
+    margin-bottom: var(--spacing-4);
+    text-align: center;
+  }
+  
+  .home__search-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--spacing-8);
+    position: relative;
+    text-align: center;
+  }
+  
+  .home__results {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: var(--spacing-8);
+  }
+  
+  .home__footer {
+    padding: var(--spacing-4);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-4);
+    font-size: var(--tw-text-xs);
+    color: #9ca3af;
+  }
+  
+  /* Element: home__footer-link */
+  .home__footer-link {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .home__footer-link:hover {
+    color: white;
+  }
+  
+  /* Modifier: home__footer-link--highlight */
+  .home__footer-link--highlight {
+    font-weight: bold;
+  }
+  

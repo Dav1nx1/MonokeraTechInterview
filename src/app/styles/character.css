@@ -1,0 +1,71 @@
+/* Block: character-page */
+.character-page {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--spacing-12) var(--spacing-4);
+}
+
+.character-page__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.character-page__image-wrapper {
+  background-color: var(--background);
+  border-radius: var(--spacing-1);
+  overflow: hidden;
+}
+
+.character-page__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1; /* For a square aspect ratio */
+}
+
+.character-page__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.character-page__name {
+  margin-bottom: var(--spacing-6);
+}
+
+.character-page__title {
+  font-size: var(--tw-font-size-3xl);
+  font-weight: bold;
+}
+
+.character-page__info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4);
+}
+
+.character-page__info-title {
+  font-size: var(--tw-font-size-lg);
+  font-weight: 600;
+}
+
+.character-page__info-text {
+  color: var(--tw-color-muted);
+}
+
+.character-page__episode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.character-page__episode-item {
+  margin-bottom: var(--spacing-2);
+  color: var(--tw-color-muted);
+}
