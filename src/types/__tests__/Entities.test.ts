@@ -50,6 +50,11 @@ describe('Domain Entities', () => {
         type: 'Planet',
         dimension: 'Dimension C-137'
       },
+      origin: {
+        name: 'test',
+        type: 'test',
+        dimension: 'test',
+      },
       image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg'
     });
   });
