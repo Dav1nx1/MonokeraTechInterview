@@ -41,3 +41,8 @@ dimensión) y datos sobre su ubicación (nombre, tipo y dimensión).
     Espero este breve trabajo, para el cual dispuse solo algunas horas, debido a mi trabajo actual, les de una claro detalle de mi manera de trabajar, y mi manera de ejecutar requerimientos. Acerca de puntos de mejora de esta aplicacion, hay varios, dependiendo de lo que se necesite mejorar, o lo que se necesite ajustar, pero ya iria atado a un requerimiento mas grande, o otras funcionalidades. Doy gracias por la oportunidad, y espero que este codigo, junto a la entrevista tecnica que tuvimos, les genere la confianza suficiente para seguir avanzando en el proceso de seleccion.
 
     Agradecido de antemano.
+- Pasos para ejecutar la demo
+
+    - Al ser un proyecto de Nextjs y no necesitar ningun tipo de autenticacion, para validar la API. y es una API fija, estatica. no se genero .env
+    - Solo se debe ejecutar el comando 
+        ``npm run dev``
