@@ -49,7 +49,7 @@ export default function Page({ params }: { params: { id: number } }) {
             </div>
             <div>
               <h3 className="text-lg font-semibold">Origin</h3>
-              <p className="text-muted-foreground">{data?.origin.name}</p>
+              <p className="text-muted-foreground">{data?.origin?.name}</p>
             </div>
           </div>
           <div>
